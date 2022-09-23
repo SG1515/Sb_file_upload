@@ -64,7 +64,8 @@ public class MemberService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Member member = memberRepository.findByUsername(username).get();
 
-        List<GrantedAuthority> authorities = new ArrayList<>();
+        //권한
+       List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("member"));
 
         return new User(member.getUsername(), member.getPassword(), authorities);
