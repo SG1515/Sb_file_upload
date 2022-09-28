@@ -17,8 +17,12 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/**")
-                .permitAll();
-        return http.build();
+                .permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/member/login") // GET
+                .loginProcessingUrl("/member/login"); // POST
+                return http.build();
     }
 
     @Bean
