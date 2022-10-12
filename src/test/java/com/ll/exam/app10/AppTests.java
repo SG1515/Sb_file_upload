@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -57,7 +58,6 @@ class AppTests {
                 .andExpect(handler().methodName("showMain"))
                 .andExpect(content().string(containsString("안녕")));
     }
-
 
     @Test
     @DisplayName("회원의 수")
@@ -107,6 +107,7 @@ class AppTests {
                 .andExpect(handler().methodName("showProfile"))
                 .andExpect(content().string(containsString("user4@test.com")));
     }
+
     @Test
     @DisplayName("회원가입")
     void t5() throws Exception {
@@ -148,5 +149,4 @@ class AppTests {
 
         memberService.removeProfileImg(member);
     }
-    
 }

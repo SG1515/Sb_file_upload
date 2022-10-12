@@ -46,7 +46,7 @@ public class MemberController {
     public String join(HttpServletRequest req, String username, String password, String email, MultipartFile profileImg) {
         Member oldMember = memberService.getMemberByUsername(username);
 
-        String passwordClearText = password; //password 원문 저장
+        String passwordClearText = password;
         password = passwordEncoder.encode(password);
 
         if (oldMember != null) {

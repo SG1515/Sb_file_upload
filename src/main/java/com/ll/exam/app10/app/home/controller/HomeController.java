@@ -24,6 +24,7 @@ public class HomeController {
     public String showAbout() {
         return "home/about";
     }
+
     @GetMapping("/currentUserOrigin")
     @ResponseBody
     public Principal currentUserOrigin(Principal principal) {

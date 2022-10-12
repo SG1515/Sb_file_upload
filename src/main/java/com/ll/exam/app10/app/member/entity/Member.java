@@ -23,7 +23,6 @@ public class Member extends BaseEntity {
     private String email;
     private String profileImg;
 
-
     public void removeProfileImgOnStorage() {
         if (profileImg == null || profileImg.trim().length() == 0) return;
 
@@ -37,7 +36,7 @@ public class Member extends BaseEntity {
     }
 
     public String getProfileImgUrl() {
-        if ( profileImg == null ) return null;
+        if (profileImg == null) return null;
 
         return "/gen/" + profileImg;
     }

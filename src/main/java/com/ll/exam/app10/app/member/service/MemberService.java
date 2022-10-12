@@ -2,14 +2,23 @@ package com.ll.exam.app10.app.member.service;
 
 import com.ll.exam.app10.app.member.entity.Member;
 import com.ll.exam.app10.app.member.repository.MemberRepository;
+import com.ll.exam.app10.app.security.dto.MemberContext;
 import com.ll.exam.app10.util.Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -27,7 +36,6 @@ public class MemberService {
     private String getCurrentProfileImgDirName() {
         return "member/" + Util.date.getCurrentDateFormatted("yyyy_MM_dd");
     }
-
 
     public Member join(String username, String password, String email, MultipartFile profileImg) {
         String profileImgDirName = getCurrentProfileImgDirName();
@@ -48,7 +56,6 @@ public class MemberService {
 
         String profileImgRelPath = profileImgDirName + "/" + fileName;
 
-
         Member member = Member.builder()
                 .username(username)
                 .password(password)
@@ -64,6 +71,7 @@ public class MemberService {
     public Member getMemberById(Long id) {
         return memberRepository.findById(id).orElse(null);
     }
+
 
 
     public Member join(String username, String password, String email) {
@@ -82,14 +90,12 @@ public class MemberService {
         return memberRepository.count();
     }
 
-
     public void removeProfileImg(Member member) {
         member.removeProfileImgOnStorage(); // 파일삭제
         member.setProfileImg(null);
 
         memberRepository.save(member);
     }
-
 
     public void setProfileImgByUrl(Member member, String url) {
         String filePath = Util.file.downloadImg(url, genFileDirPath + "/" + getCurrentProfileImgDirName() + "/" + UUID.randomUUID());
