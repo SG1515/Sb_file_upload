@@ -1,8 +1,0 @@
-# 이 파일의 이름에서 .default를 제거해주세요.
-spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          kakao:
-            clientId: 2d9dca4fcc552a5b181d92e6ab0a4a94
