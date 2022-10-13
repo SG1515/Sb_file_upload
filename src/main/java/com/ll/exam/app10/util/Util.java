@@ -1,6 +1,5 @@
 package com.ll.exam.app10.util;
 
-import groovy.grape.IvyGrabRecord;
 import org.apache.tika.Tika;
 import org.springframework.web.client.RestTemplate;
 
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Optional;
 
