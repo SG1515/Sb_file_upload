@@ -1,6 +1,5 @@
 package com.ll.exam.app10.app.member.service;
 
-
 import com.ll.exam.app10.app.member.entity.Member;
 import com.ll.exam.app10.app.member.repository.MemberRepository;
 import com.ll.exam.app10.util.Util;
@@ -45,6 +44,10 @@ public class MemberService {
     }
 
     private String saveProfileImg(MultipartFile profileImg) {
+        if ( profileImg == null || profileImg.isEmpty() ) {
+            return null;
+        }
+
         String profileImgDirName = getCurrentProfileImgDirName();
 
         String ext = Util.file.getExt(profileImg.getOriginalFilename());
