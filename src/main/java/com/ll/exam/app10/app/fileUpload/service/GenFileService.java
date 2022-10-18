@@ -45,7 +45,6 @@ public class GenFileService {
             int fileSize = (int) multipartFile.getSize();
             String fileDir = relTypeCode + "/" + Util.date.getCurrentDateFormatted("yyyy_MM_dd");
 
-
             GenFile genFile = GenFile
                     .builder()
                     .relTypeCode(relTypeCode)

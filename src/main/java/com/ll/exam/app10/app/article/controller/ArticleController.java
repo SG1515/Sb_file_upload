@@ -50,6 +50,7 @@ public class ArticleController {
         Article article = articleService.write(memberContext.getId(), articleForm.getSubject(), articleForm.getContent());
 
         RsData<Map<String, GenFile>> saveFilesRsData = genFileService.saveFiles(article, fileMap);
+
         log.debug("saveFilesRsData : " + saveFilesRsData);
 
         return "작업중";
