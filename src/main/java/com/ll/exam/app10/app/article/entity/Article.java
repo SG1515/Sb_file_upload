@@ -5,7 +5,6 @@ import com.ll.exam.app10.app.member.entity.Member;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -19,7 +18,6 @@ import javax.persistence.ManyToOne;
 public class Article extends BaseEntity {
     @ManyToOne
     private Member author;
-    @Column(unique = true)
     private String subject;
     private String content;
 }
