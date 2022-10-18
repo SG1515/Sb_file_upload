@@ -29,7 +29,6 @@ import java.util.Map;
 public class OAuth2UserService extends DefaultOAuth2UserService {
     @Autowired
     private MemberRepository memberRepository;
-
     @Autowired
     private MemberService memberService;
 
@@ -76,7 +75,6 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                     memberRepository.save(member);
 
                     memberService.setProfileImgByUrl(member, profile_image);
-
                 }
             }
         } else {

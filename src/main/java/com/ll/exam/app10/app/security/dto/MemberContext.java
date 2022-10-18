@@ -28,6 +28,7 @@ public class MemberContext extends User implements OAuth2User {
         super(member.getUsername(), member.getPassword(), authorities);
         this.id = member.getId();
         this.email = member.getEmail();
+        this.modifyDate = member.getModifyDate();
         this.profileImgUrl = member.getProfileImgUrl();
     }
 

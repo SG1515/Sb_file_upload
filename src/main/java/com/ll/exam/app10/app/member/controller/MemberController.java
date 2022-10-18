@@ -35,15 +35,15 @@ public class MemberController {
     private final PasswordEncoder passwordEncoder;
 
     @PreAuthorize("isAnonymous()")
-    @GetMapping("/join")
-    public String showJoin() {
-        return "member/join";
-    }
-
-    @PreAuthorize("isAnonymous()")
     @GetMapping("/login")
     public String showLogin() {
         return "member/login";
+    }
+
+    @PreAuthorize("isAnonymous()")
+    @GetMapping("/join")
+    public String showJoin() {
+        return "member/join";
     }
 
     @PreAuthorize("isAnonymous()")
@@ -92,9 +92,9 @@ public class MemberController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         // 기존에 세션에 저장된 MemberContext 객체의 내용을 수정하는 코드 끝
 
-
         return "redirect:/member/profile";
     }
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/profile")
     public String showProfile() {
@@ -110,6 +110,7 @@ public class MemberController {
         }
 
         URI redirectUri = new URI(profileImgUrl);
+
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setLocation(redirectUri);
         httpHeaders.setCacheControl(CacheControl.maxAge(60 * 60 * 1, TimeUnit.SECONDS));
